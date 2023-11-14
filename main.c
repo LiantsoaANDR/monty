@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 
-	readf(argv);
+	readf(argv[1]);
 
 	return (0);
 }
