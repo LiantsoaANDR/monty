@@ -30,10 +30,20 @@ void readf(const char *filename)
 }
 /**
  * execute - execute the opcode
+ * @fd: file descriptor of the file
  * @opcode: the opcode to execute
  * @arg: the argument of the opcode
  * @counter: the nth line
  */
-void execute(char *opcode, char *arg, unsigned int counter)
+void execute(ssize_t fd, char *opcode, char *arg, unsigned int counter)
+{
+	instruction_t op_f[] = {{"push", pushf}, {"pall", pallf}};
+}
+/**
+ * pushf - push function
+ * @node: pointer to the stack
+ * @counter: line number
+ */
+void pushf(stack_t **node, unsigned int line_number)
 {
 }
