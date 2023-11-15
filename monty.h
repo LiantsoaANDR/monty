@@ -44,6 +44,6 @@ typedef struct data_s
 extern data_t data;
 
 void readf(const char *filename);
-void execute(char *opcode, char *arg, unsigned int counter);
+void execute(char *code, char *arg, unsigned int counter);
 
 #endif
