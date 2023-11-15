@@ -29,6 +29,19 @@ typedef struct instruction_s
 	char *opcode;
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
+/**
+ * struct data_s - lists of arg and number of line of the op code
+ * @arg: the argument of the opcode
+ * @line: the line number
+ * @file: the file descriptor
+ */
+typedef struct data_s
+{
+	char *arg;
+	unsigned int line;
+	ssize_t file;
+} data_t;
+extern data_t data;
 
 void readf(const char *filename);
 void execute(char *opcode, char *arg, unsigned int counter);
