@@ -5,9 +5,10 @@
  */
 void readf(const char *filename)
 {
-	char *line = NULL;
+	char *line = NULL, *opcode, *arg;
 	size_t size = 0;
 	ssize_t fd;
+	unsigned int counter = 0;
 
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
@@ -17,7 +18,22 @@ void readf(const char *filename)
 	}
 	while (getline(&line, &size, fd) != -1)
 	{
-		/* parse it */
-		/* counter++ */
+		opcode = strtok(line, delim);
+		arg = strtok(NULL, delim);
+		counter++;
+
+		execute(opcode, arg, counter);
 	}
+
+	free(line);
+	close(fd);
+}
+/**
+ * execute - execute the opcode
+ * @opcode: the opcode to execute
+ * @arg: the argument of the opcode
+ * @counter: the nth line
+ */
+void execute(char *opcode, char *arg, unsigned int counter)
+{
 }
