@@ -39,10 +39,12 @@ void pallf(stack_t **stack, unsigned int nbr)
 	if (!current)
 		return;
 
+	while (current->next)
+		current = current->next;
 	while (current)
 	{
 		printf("%i\n", current->i);
-		current = current->next;
+		current = current->prev;
 	}
 }
 /**
