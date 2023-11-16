@@ -7,41 +7,40 @@ void readf(const char *filename)
 {
 	char *line = NULL;
 	size_t size = 0;
-	ssize_t fd, read;
+	ssize_t read;
 	unsigned int l = 0;
 	stack_t **stack = NULL;
+	FILE *file;
 
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
+	file = fopen(filename, "r");
+	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	read = getline(&line, &size, fd);
+	data.file = file;
+	read = getline(&line, &size, file);
 	while (read != -1)
 	{
 		l++;
 		data.line = line;
-		exec(fd, l, stack);
-		read = getline(&line, &size, fd);
+		exec(l, stack);
+		read = getline(&line, &size, file);
 	}
 
 	free(line);
-	close(fd);
+	fclose(file);
 }
 /**
  * exec - exec the opcode
- * @fd: file descriptor of the file
  * @l: the nth line
  * @stack: the stack
  */
-void exec(ssize_t fd, unsigned int l, stack_t **stack)
+void exec(unsigned int l, stack_t **stack)
 {
 	instruction_t op_f[] = {{"push", pushf}, {NULL, NULL}};
 	char *code = NULL, *delim = " \t\n";
 	unsigned int i = 0;
-
-	data.file = fd;
 
 	code = strtok(data.line, delim);
 	data.arg = strtok(NULL, delim);
@@ -58,6 +57,6 @@ void exec(ssize_t fd, unsigned int l, stack_t **stack)
 	fprintf(stderr, "L%i: unknown instruction %s", l, code);
 	free_stack(*stack);
 	free(data.line);
-	close(fd);
+	fclose(data.file);
 	exit(EXIT_FAILURE);
 }

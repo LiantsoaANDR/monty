@@ -2,11 +2,11 @@
 #define _MONTY_H_
 
 #include <stdio.h>
-#include <unistd.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
-#include <fcntl.h>
 #include <string.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -46,13 +46,13 @@ typedef struct data_s
 {
 	char *arg;
 	char *line;
-	ssize_t file;
+	FILE *file;
 } data_t;
 extern data_t data;
 
 
 void readf(const char *filename);
-void exec(ssize_t fd, unsigned int l, stack_t **stack);
+void exec(unsigned int l, stack_t **stack);
 
 /* opcode functions */
 void err1(char *msg, unsigned int line_number,stack_t **stack);
