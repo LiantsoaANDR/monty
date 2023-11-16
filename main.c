@@ -7,11 +7,9 @@
  */
 int main(int argc, char **argv)
 {
-	data = {NULL, 0, 0};
-
 	if (argc != 2)
 	{
-		dprintf(STDERR_FILENO, "USAGE: monty file\n");
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 

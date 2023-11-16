@@ -14,14 +14,14 @@ void readf(const char *filename)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't open file %s\n", filename);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 	while (getline(&line, &size, fd) != -1)
 	{
 		l++;
 		data.line = line;
-		exec(fd, l, node);
+		exec(fd, l, stack);
 	}
 
 	free(line);
@@ -35,8 +35,9 @@ void readf(const char *filename)
  */
 void exec(ssize_t fd, unsigned int l, stack_t **stack)
 {
-	instruction_t op_f[] = {{"push", pushf}, {"pall", pallf}};
-	char *code = NULL, *str = NULL, *delim = " \t\n"
+	instruction_t op_f[] = {{"push", pushf}, {NULL, NULL}};
+	char *code = NULL, *delim = " \t\n";
+	unsigned int i = 0;
 
 	data.file = fd;
 
@@ -46,18 +47,15 @@ void exec(ssize_t fd, unsigned int l, stack_t **stack)
 	{
 		if (strcmp(code, op_f[i].opcode) == 0)
 		{
-			op_f[i].f(stack, counter);
+			op_f[i].f(stack, l);
 			return;
 		}
 		i++;
 	}
 
-	if (op)
-	{
-		dprintf(STDERR_FILENO, "L%i: unknown instruction %s", l, code);
-		free_stack(*stack);
-		free(data.line);
-		close(fd);
-		exit(EXIT_FAILURE);
-	}
+	fprintf(stderr, "L%i: unknown instruction %s", l, code);
+	free_stack(*stack);
+	free(data.line);
+	close(fd);
+	exit(EXIT_FAILURE);
 }

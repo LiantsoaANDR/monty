@@ -7,6 +7,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <string.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @i: integer
@@ -54,7 +55,7 @@ void readf(const char *filename);
 void exec(ssize_t fd, unsigned int l, stack_t **stack);
 
 /* opcode functions */
-void err1(char *msg, unsigned int line_number);
+void err1(char *msg, unsigned int line_number,stack_t **stack);
 void pushf(stack_t **stack, unsigned int nbr);
 
 /* node functions */

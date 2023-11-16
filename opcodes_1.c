@@ -10,7 +10,7 @@ void pushf(stack_t **stack, unsigned int nbr)
 	int sign = 1;
 
 	if (!(data.arg))
-		err1("L%i: usage: push integer\n", nbr);
+		err1("usage: push integer", nbr, stack);
 
 	while (data.arg[i] == '-')
 	{
@@ -20,7 +20,7 @@ void pushf(stack_t **stack, unsigned int nbr)
 	while (data.arg[i])
 	{
 		if (data.arg[i] < 48 || data.arg[i] > 57)
-			err1("L%i: usage: push integer\n", nbr);
+			err1("usage: push integer", nbr, stack);
 		i++;
 	}
 
