@@ -9,6 +9,11 @@ void add_node(stack_t **head, int n)
 	stack_t *new = NULL, *current;
 
 	new = malloc(sizeof(stack_t));
+	if (!new)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		err1(head);
+	}
 
 	new->i = n;
 	new->next = NULL;
