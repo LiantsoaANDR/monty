@@ -64,7 +64,7 @@ void nopf(stack_t **stack, unsigned int nbr);
 
 /* node functions */
 void add_node(stack_t **head, int i);
-void free_stack(stack_t *head);
+void free_stack(stack_t **head);
 
 
 #endif

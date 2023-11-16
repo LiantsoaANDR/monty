@@ -9,6 +9,7 @@ void pushf(stack_t **stack, unsigned int nbr)
 	unsigned int i = 0;
 	int sign = 1;
 
+	printf("inside pushf\n");
 	if (!(data.arg))
 		err1("usage: push integer", nbr, stack);
 
@@ -36,6 +37,7 @@ void pallf(stack_t **stack, unsigned int nbr)
 	stack_t *current = *stack;
 
 	(void)nbr;
+	printf("inside pallf\n");
 	if (!current)
 		return;
 
