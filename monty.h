@@ -63,6 +63,7 @@ void pallf(stack_t **stack, unsigned int nbr);
 void nopf(stack_t **stack, unsigned int nbr);
 void pintf(stack_t **stack, unsigned int nbr);
 void popf(stack_t **stack, unsigned int nbr);
+void swapf(stack_t **stack, unsigned int nbr);
 
 /* node functions */
 void add_node(stack_t **head, int i);
