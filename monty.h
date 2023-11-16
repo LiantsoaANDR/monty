@@ -1,6 +1,12 @@
 #ifndef _MONTY_H_
 #define _MONTY_H_
 
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -45,6 +51,14 @@ extern data_t data;
 
 
 void readf(const char *filename);
-void execute(char *code, char *arg, unsigned int counter);
+void exec(ssize_t fd, line,unsigned int l, stack_t **stack);
+
+/* opcode functions */
+void pushf(stack_t **stack, unsigned int line_number);
+
+/* node functions */
+void add_node(stack_t **head, int i);
+void free_stack(stack_t *head);
+
 
 #endif
