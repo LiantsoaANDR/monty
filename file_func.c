@@ -41,7 +41,8 @@ void exec(unsigned int l, stack_t **stack)
 				{"nop", nopf}, {"pint", pintf},
 				{"pop", popf}, {"swap", swapf},
 				{"add", addf}, {"sub", subf},
-				{NULL, NULL}};
+				{"div", divf}, {"mul", mulf},
+				{"mod", modf}, {NULL, NULL}};
 	char *code = NULL, *delim = " \t\n";
 	unsigned int i = 0;
 
