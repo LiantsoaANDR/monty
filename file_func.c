@@ -55,7 +55,7 @@ void exec(unsigned int l, stack_t **stack)
 		i++;
 	}
 
-	fprintf(stderr, "L%i: unknown instruction %s", l, code);
+	fprintf(stderr, "L%i: unknown instruction %s\n", l, code);
 	free_stack(*stack);
 	if (data.line)
 		free(data.line);

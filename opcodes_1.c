@@ -11,7 +11,7 @@ void pushf(stack_t **stack, unsigned int nbr)
 
 	if (!(data.arg))
 	{
-		fprintf(stderr, "L%i: usage: push integer", nbr);
+		fprintf(stderr, "L%i: usage: push integer\n", nbr);
 		err1(stack);
 	}
 
@@ -24,7 +24,7 @@ void pushf(stack_t **stack, unsigned int nbr)
 	{
 		if (data.arg[i] < 48 || data.arg[i] > 57)
 		{
-			fprintf(stderr, "L%i: usage: push integer", nbr);
+			fprintf(stderr, "L%i: usage: push integer\n", nbr);
 			err1(stack);
 		}
 		i++;
@@ -74,7 +74,7 @@ void pintf(stack_t **stack, unsigned int nbr)
 
 	if (!stack || !(*stack))
 	{
-		fprintf(stderr, "L%i: can't pint, stack empty", nbr);
+		fprintf(stderr, "L%i: can't pint, stack empty\n", nbr);
 		err1(stack);
 	}
 
