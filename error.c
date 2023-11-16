@@ -8,7 +8,7 @@
 void err1(char *msg, unsigned int line_number, stack_t **stack)
 {
 	fprintf(stderr, "L%i: %s\n", line_number, msg);
-	free_stack(stack);
+	free_stack(*stack);
 	if (data.line)
 		free(data.line);
 	fclose(data.file);

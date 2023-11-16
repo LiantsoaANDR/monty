@@ -8,9 +8,6 @@ void add_node(stack_t **head, int n)
 {
 	stack_t *new = NULL, *current;
 
-	if (!head)
-		head = malloc(sizeof(stack_t));
-
 	new = malloc(sizeof(stack_t));
 
 	new->i = n;
