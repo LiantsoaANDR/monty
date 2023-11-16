@@ -6,20 +6,21 @@
  */
 void add_node(stack_t **head, int n)
 {
-	stack_t *new = NULL, *current = *head;
+	stack_t *new = NULL, *current;
 
 	new = malloc(sizeof(stack_t));
 
 	new->i = n;
 	new->next = NULL;
 
-	if (!current)
+	if (!head || !(*head))
 	{
 		new->prev = NULL;
 		*head = new;
 		return;
 	}
 
+	current = *head;
 	while (current->next)
 		current = current->next;
 

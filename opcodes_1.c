@@ -45,3 +45,13 @@ void pallf(stack_t **stack, unsigned int nbr)
 		current = current->next;
 	}
 }
+/**
+ * nopf - does nothing
+ * @stack: pointer to the stack
+ * @nbr: line number
+ */
+void nopf(stack_t **stack, unsigned int nbr)
+{
+	(void)stack;
+	(void)nbr;
+}
