@@ -5,7 +5,7 @@
  */
 void err1(stack_t **stack)
 {
-	if (stack && *stack)
+	if (stack)
 		free_stack(*stack);
 	if (data.line)
 		free(data.line);

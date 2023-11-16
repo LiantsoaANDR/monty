@@ -99,5 +99,6 @@ void popf(stack_t **stack, unsigned int nbr)
 
 	while (current->next)
 		current = current->next;
+	current->prev->next = NULL;
 	free(current);
 }
