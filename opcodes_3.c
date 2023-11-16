@@ -56,7 +56,7 @@ void pcharf(stack_t **stack, unsigned int nbr)
 
 	if (current->i < 0 || current->i > 127)
 	{
-		fprintf(stderr, "L%i: can't pchar, value out of range", nbr);
+		fprintf(stderr, "L%i: can't pchar, value out of range\n", nbr);
 		err1(stack);
 	}
 
