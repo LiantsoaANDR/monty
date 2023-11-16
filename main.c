@@ -1,4 +1,5 @@
 #include "monty.h"
+data_t data;
 /**
  * main - interpreter for Monty ByteCodes files
  * @argc: argument count
