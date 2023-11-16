@@ -2,14 +2,27 @@
 /**
  * pushf - pushes an element to the stack
  * @stack: pointer to the stack
- * @line_number: line number
+ * @nbr: line number
  */
-void pushf(stack_t **stack, unsigned int line_number)
+void pushf(stack_t **stack, unsigned int nbr)
 {
 	unsigned int i = 0;
+	int sign = 1;
 
 	if (!(data.arg))
+		err1("L%i: usage: push integer\n", nbr);
+
+	while (data.arg[i] == '-')
 	{
-		dprintf(STDERR_FILENO, "L%i: usage: push integer", data.line);
+		sign *= -1;
+		i++;
 	}
+	while (data.arg[i])
+	{
+		if (data.arg[i] < 48 || data.arg[i] > 57)
+			err1("L%i: usage: push integer\n", nbr);
+		i++;
+	}
+
+	add_node(stack, atoi(data.arg));
 }

@@ -20,7 +20,8 @@ void readf(const char *filename)
 	while (getline(&line, &size, fd) != -1)
 	{
 		l++;
-		exec(fd, line, l, node);
+		data.line = line;
+		exec(fd, l, node);
 	}
 
 	free(line);
@@ -29,19 +30,17 @@ void readf(const char *filename)
 /**
  * exec - exec the opcode
  * @fd: file descriptor of the file
- * @line: the content of the l nt line of the file
  * @l: the nth line
  * @stack: the stack
  */
-void exec(ssize_t fd, line,unsigned int l, stack_t **stack)
+void exec(ssize_t fd, unsigned int l, stack_t **stack)
 {
 	instruction_t op_f[] = {{"push", pushf}, {"pall", pallf}};
-	char *code= NULL, *str = NULL, *delim = " \t\n"
+	char *code = NULL, *str = NULL, *delim = " \t\n"
 
-	data.line = l;
 	data.file = fd;
 
-	code = strtok(line, delim);
+	code = strtok(data.line, delim);
 	data.arg = strtok(NULL, delim);
 	while (code && op_f[i].opcode)
 	{
@@ -57,7 +56,7 @@ void exec(ssize_t fd, line,unsigned int l, stack_t **stack)
 	{
 		dprintf(STDERR_FILENO, "L%i: unknown instruction %s", l, code);
 		free_stack(*stack);
-		free(line);
+		free(data.line);
 		close(fd);
 		exit(EXIT_FAILURE);
 	}

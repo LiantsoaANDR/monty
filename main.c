@@ -1,5 +1,4 @@
 #include "monty.h"
-data_t data = {NULL, 0, 0}
 /**
  * main - interpreter for Monty ByteCodes files
  * @argc: argument count
@@ -8,6 +7,7 @@ data_t data = {NULL, 0, 0}
  */
 int main(int argc, char **argv)
 {
+	data = {NULL, 0, 0};
 
 	if (argc != 2)
 	{

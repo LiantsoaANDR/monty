@@ -9,7 +9,7 @@
 #include <fcntl.h>
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
- * @n: integer
+ * @i: integer
  * @prev: points to the previous element of the stack (or queue)
  * @next: points to the next element of the stack (or queue)
  *
@@ -44,17 +44,18 @@ typedef struct instruction_s
 typedef struct data_s
 {
 	char *arg;
-	unsigned int line;
+	char *line;
 	ssize_t file;
 } data_t;
 extern data_t data;
 
 
 void readf(const char *filename);
-void exec(ssize_t fd, line,unsigned int l, stack_t **stack);
+void exec(ssize_t fd, unsigned int l, stack_t **stack);
 
 /* opcode functions */
-void pushf(stack_t **stack, unsigned int line_number);
+void err1(char *msg, unsigned int line_number);
+void pushf(stack_t **stack, unsigned int nbr);
 
 /* node functions */
 void add_node(stack_t **head, int i);
