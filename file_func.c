@@ -5,7 +5,7 @@
  */
 void readf(const char *filename)
 {
-	char *line = NULL;
+	/*char *line = NULL;*/
 	size_t size = 0;
 	ssize_t read;
 	unsigned int l = 0;
@@ -19,18 +19,19 @@ void readf(const char *filename)
 		exit(EXIT_FAILURE);
 	}
 	data.file = file;
-	read = getline(&line, &size, file);
+	read = getline(&data.line, &size, file);
 	while (read != -1)
 	{
 		l++;
-		data.line = line;
+		/*data.line = line;*/
 		exec(l, stack);
 		/*free(data.line);*/
-		read = getline(&line, &size, file);
+		read = getline(&data.line, &size, file);
 	}
-	if (line)
-		free(line);
+	if (data.line)
+		free(data.line);
 	fclose(file);
+	free_stack(*stack);
 }
 /**
  * exec - exec the opcode
