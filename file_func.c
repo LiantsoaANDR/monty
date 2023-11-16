@@ -7,7 +7,7 @@ void readf(const char *filename)
 {
 	char *line = NULL;
 	size_t size = 0;
-	ssize_t fd;
+	ssize_t fd, read;
 	unsigned int l = 0;
 	stack_t **stack = NULL;
 
@@ -17,11 +17,13 @@ void readf(const char *filename)
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	while (getline(&line, &size, fd) != -1)
+	read = getline(&line, &size, fd);
+	while (read != -1)
 	{
 		l++;
 		data.line = line;
 		exec(fd, l, stack);
+		read = getline(&line, &size, fd);
 	}
 
 	free(line);
