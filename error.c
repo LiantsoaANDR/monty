@@ -5,7 +5,8 @@
  */
 void err1(stack_t **stack)
 {
-	free_stack(*stack);
+	if (stack && *stack)
+		free_stack(*stack);
 	if (data.line)
 		free(data.line);
 	fclose(data.file);

@@ -82,3 +82,22 @@ void pintf(stack_t **stack, unsigned int nbr)
 		current = current->next;
 	printf("%i\n", current->i);
 }
+/**
+ * popf - removes the top element of the stack
+ * @stack: pointer to the stack
+ * @nbr: line number
+ */
+void popf(stack_t **stack, unsigned int nbr)
+{
+	stack_t *current = *stack;
+
+	if (!stack || !(*stack))
+	{
+		fprintf(stderr, "L%i: can't pop an empty stack", nbr);
+		err1(stack);
+	}
+
+	while (current->next)
+		current = current->next;
+	free(current);
+}
