@@ -47,6 +47,11 @@ void exec(unsigned int l, stack_t **stack)
 	unsigned int i = 0;
 
 	code = strtok(data.line, delim);
+	if (code[0] == '#')
+	{
+		op_f[2].f(stack, l);
+		return;
+	}
 	data.arg = strtok(NULL, delim);
 	while (code && op_f[i].opcode)
 	{
