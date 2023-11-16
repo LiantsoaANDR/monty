@@ -25,11 +25,11 @@ void readf(const char *filename)
 		l++;
 		data.line = line;
 		exec(l, stack);
-		free(data.line);
+		/*free(data.line);*/
 		read = getline(&line, &size, file);
 	}
-
-	free(line);
+	if (line)
+		free(line);
 	fclose(file);
 }
 /**
