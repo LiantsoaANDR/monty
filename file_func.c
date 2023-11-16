@@ -38,7 +38,7 @@ void readf(const char *filename)
 void exec(unsigned int l, stack_t **stack)
 {
 	instruction_t op_f[] = {{"push", pushf}, {"pall", pallf},
-				{"nop", nopf},
+				{"nop", nopf}, {"pint", pintf},
 				{NULL, NULL}};
 	char *code = NULL, *delim = " \t\n";
 	unsigned int i = 0;

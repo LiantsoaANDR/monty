@@ -10,7 +10,10 @@ void pushf(stack_t **stack, unsigned int nbr)
 	int sign = 1;
 
 	if (!(data.arg))
-		err1("usage: push integer", nbr, stack);
+	{
+		fprintf(stderr, "L%i: usage: push integer", nbr);
+		err1(stack);
+	}
 
 	while (data.arg[i] == '-')
 	{
@@ -20,7 +23,10 @@ void pushf(stack_t **stack, unsigned int nbr)
 	while (data.arg[i])
 	{
 		if (data.arg[i] < 48 || data.arg[i] > 57)
-			err1("usage: push integer", nbr, stack);
+		{
+			fprintf(stderr, "L%i: usage: push integer", nbr);
+			err1(stack);
+		}
 		i++;
 	}
 
@@ -56,4 +62,23 @@ void nopf(stack_t **stack, unsigned int nbr)
 {
 	(void)stack;
 	(void)nbr;
+}
+/**
+ * pintf - prints the value at the top of the stack, followed by a new line
+ * @stack: the stack
+ * @nbr: line number
+ */
+void pintf(stack_t **stack, unsigned int nbr)
+{
+	stack_t *current = *stack;
+
+	if (!stack || !(*stack))
+	{
+		fprintf(stderr, "L%i: can't pint, stack empty", nbr);
+		err1(stack);
+	}
+
+	while (current->next)
+		current = current->next;
+	printf("%i\n", current->i);
 }

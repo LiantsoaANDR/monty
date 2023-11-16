@@ -57,10 +57,11 @@ void readf(const char *filename);
 void exec(unsigned int l, stack_t **stack);
 
 /* opcode functions */
-void err1(char *msg, unsigned int line_number,stack_t **stack);
+void err1(stack_t **stack);
 void pushf(stack_t **stack, unsigned int nbr);
 void pallf(stack_t **stack, unsigned int nbr);
 void nopf(stack_t **stack, unsigned int nbr);
+void pintf(stack_t **stack, unsigned int nbr);
 
 /* node functions */
 void add_node(stack_t **head, int i);
