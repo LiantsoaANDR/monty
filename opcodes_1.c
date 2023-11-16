@@ -26,3 +26,22 @@ void pushf(stack_t **stack, unsigned int nbr)
 
 	add_node(stack, atoi(data.arg));
 }
+/**
+ * pallf - prints all the elements of a list
+ * @stack: pointer to the stack
+ * @nbr: line number, we won't use
+ */
+void pallf(stack_t **stack, unsigned int nbr)
+{
+	stack_t *current = *stack;
+
+	(void)nbr;
+	if (!current)
+		return;
+
+	while (current)
+	{
+		printf("%i\n", current->i);
+		current = current->next;
+	}
+}
