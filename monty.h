@@ -69,6 +69,7 @@ void subf(stack_t **stack, unsigned int nbr);
 void divf(stack_t **stack, unsigned int nbr);
 void mulf(stack_t **stack, unsigned int nbr);
 void modfunc(stack_t **stack, unsigned int nbr);
+void pcharf(stack_t **stack, unsigned int nbr);
 
 /* node functions */
 void add_node(stack_t **head, int i);
