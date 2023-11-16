@@ -6,7 +6,7 @@
  */
 void add_node(stack_t **head, int n)
 {
-	stack_t *new, *current = *head;
+	stack_t *new = NULL, *current = *head;
 
 	new = malloc(sizeof(stack_t));
 
